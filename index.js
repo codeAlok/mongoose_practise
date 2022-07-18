@@ -58,3 +58,11 @@ const deleteInDb = async ()=>{
 
 // deleteInDb();
 
+// ********** Find data operation *******
+const findInDb = async ()=>{
+    const productModel = mongoose.model('products', productSchema);
+    let data = await productModel.find({name: "realme 8"});
+    console.log(data);
+}
+
+findInDb();
