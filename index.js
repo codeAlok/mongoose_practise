@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 
-
-// **** create/ saved in db model + schema *****
-const saveInDb = async ()=>{
-    await mongoose.connect("mongodb://localhost:27017/firstDatabase");
+mongoose.connect("mongodb://localhost:27017/firstDatabase");
 
     //schema => All fields are defined under this. only specified field + data types data can be filled in database rest will be blocked
     const productSchema = new mongoose.Schema({
@@ -13,8 +10,11 @@ const saveInDb = async ()=>{
         category: String
     });
 
-    // model => by using schema , it connect mongodb to nodeJs
 
+// **** create/ saved in db model + schema *****
+const saveInDb = async ()=>{
+   
+    // model => by using schema , it connect mongodb to nodeJs
     const productModel = mongoose.model('products', productSchema);
 
     // let data = new productModel({name: "m10", price: 1000});
@@ -32,3 +32,17 @@ const saveInDb = async ()=>{
 
 // saveInDb();
 
+
+// ***** update data operation *******
+const updateInDb = async ()=>{
+    const productModel = mongoose.model('products', productSchema);
+    let data = await productModel.updateOne(
+        {name: "m10"},
+        {
+            $set: {price: 700}
+        }
+    )
+    console.log(data);
+}
+
+updateInDb();
