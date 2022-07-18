@@ -39,7 +39,7 @@ const updateInDb = async ()=>{
     let data = await productModel.updateOne(
         {name: "m10"},
         {
-            $set: {price: 700}
+            $set: {price: 700, name: "realme ****"}
         }
     )
     console.log(data);
