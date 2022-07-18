@@ -45,4 +45,16 @@ const updateInDb = async ()=>{
     console.log(data);
 }
 
-updateInDb();
+// updateInDb();
+
+// ***** Delete data operation ********
+const deleteInDb = async ()=>{
+    const productModel = mongoose.model('products', productSchema);
+    let data = await productModel.deleteOne(
+        {name: 'Note NOte'}
+    );
+    console.log(data);
+}
+
+// deleteInDb();
+
