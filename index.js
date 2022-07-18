@@ -1,3 +1,6 @@
+// ************ This file is for basic Mongoose CRUD operations *********
+
+
 const mongoose = require('mongoose');
 
 mongoose.connect("mongodb://localhost:27017/firstDatabase");
