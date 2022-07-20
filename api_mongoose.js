@@ -9,6 +9,7 @@ const product = require('./products');
 const app = express();
 app.use(express.json()); // convert string data into json
 
+// ****** Post api with mongoose *******
 app.post("/create", async (req, res)=>{
     let data = new product(req.body);
     let result = await data.save();
@@ -16,6 +17,21 @@ app.post("/create", async (req, res)=>{
     console.log(result);
     console.log(req.body);
     res.send(result);
+});
+
+// ******** Get api with mongoose ******
+app.get("/list", async (req, res)=>{
+    let data = await product.find();
+
+    res.send(data);
+});
+
+// ******** Delete api with mongoose ******
+app.delete("/delete/:_id", async (req, res)=>{
+    console.log(req.params);
+    let data = await product.deleteOne(req.params);
+    res.send(data);
+    
 });
 
 app.listen(5000);
