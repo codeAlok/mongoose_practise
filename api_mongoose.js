@@ -42,4 +42,18 @@ app.put("/update/:_id", async (req, res)=>{
     
 });
 
+// ******** Search api **********
+app.get("/search/:key", async (req, res)=>{
+    console.log(req.params.key);
+    let data = await product.find(
+        {
+            "$or":[
+                {"name": {$regex: req.params.key}},
+                {"stock": {$regex: req.params.key}}
+            ]
+        }
+    );
+    res.send(data);
+});
+
 app.listen(5000);
