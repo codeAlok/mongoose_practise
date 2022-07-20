@@ -34,4 +34,12 @@ app.delete("/delete/:_id", async (req, res)=>{
     
 });
 
+// ******** Put api with mongoose **********
+app.put("/update/:_id", async (req, res)=>{
+    console.log(req.params);
+    let data = await product.updateOne(req.params, {$set: req.body});
+    res.send(data);
+    
+});
+
 app.listen(5000);
