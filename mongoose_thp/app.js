@@ -82,4 +82,18 @@ const createDocument = async () => {
     }
 };
 
-createDocument();
+// createDocument();
+
+
+// **** Read Document ****
+const getDocument = async () =>{
+    // const result = await PlayList.find({ctype: "Database"}); //similar data
+
+    // const result = await PlayList.find({ctype: "Database"}).select({name: 1}); //only name with id
+
+    const result = await PlayList.find({ctype: "Database"}).select({name: 1}).limit(1); //only one data (name with id)
+
+    console.log(result);
+}
+
+getDocument();
