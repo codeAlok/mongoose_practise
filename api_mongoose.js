@@ -19,6 +19,16 @@ app.post("/create", async (req, res)=>{
     res.send(result);
 });
 
+//Another method to create data in mongoose.
+//post method changes by Rishav
+//In mongoDB to "create" data we use insertOne() or insertMany() but these function is not present in mongoose so to create data in mongoose we use create() function.
+app.post("/create", async (req, res)=>{
+    const data = await product.create(req.body);
+    console.log(req.body);
+    res.send(data);
+});
+
+
 // ******** Get api with mongoose ******
 app.get("/list", async (req, res)=>{
     let data = await product.find();
