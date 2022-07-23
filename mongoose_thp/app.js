@@ -116,4 +116,23 @@ const queryDocument = async () =>{
     }
 }
 
-queryDocument();
+// queryDocument();
+
+
+// **** Logical Query operator ****
+// !!! Google => for more
+// Mongodb Query is used  in Mongoose also 
+const logicalQueryDoc = async () => {
+    try{
+        // const result = await PlayList.find({$or : [ {ctype: "Back End"}, {author: "Alok Kumar"} ]});
+
+        const result = await PlayList.find({$and : [ {ctype: "Front End"}, {author: "Alok Kumar"} ]});
+
+        console.log(result);
+    }
+    catch(err){
+        console.log(err);
+    }
+};
+
+logicalQueryDoc();
