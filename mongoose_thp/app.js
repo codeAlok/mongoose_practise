@@ -42,7 +42,7 @@ const PlayList = new mongoose.model("playlist", playListSchema);
 
 // reactPlaylist.save();  //takes time to save so, handle through async/await
 
-// **Through async/await **
+// ** Through async/await **
 const createDocument = async () => {
     try {
         const reactPlaylist = new PlayList({
@@ -52,8 +52,29 @@ const createDocument = async () => {
             author: "Alok Kumar",
             active: true,
         });
+        const jsPlaylist = new PlayList({
+            name: "Javascript",
+            ctype: "Front End",
+            videos: 100,
+            author: "Alok Kumar",
+            active: true,
+        });
+        const mongodbPlaylist = new PlayList({
+            name: "Mongodb",
+            ctype: "Database",
+            videos: 6,
+            author: "Alok Kumar",
+            active: true,
+        });
+        const mongoosePlaylist = new PlayList({
+            name: "Mongoose",
+            ctype: "Database",
+            videos: 13,
+            author: "Alok Kumar",
+            active: true,
+        });
 
-        const result = await reactPlaylist.save();
+        const result = await PlayList.insertMany([reactPlaylist, jsPlaylist, mongodbPlaylist, mongoosePlaylist]);
         console.log(result);
     }
     catch (err) {
