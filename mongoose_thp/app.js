@@ -96,4 +96,24 @@ const getDocument = async () =>{
     console.log(result);
 }
 
-getDocument();
+// getDocument();
+
+
+// **** Search through query operator ****
+// Google => comparision Query operator for more
+
+const queryDocument = async () =>{
+    try{
+        // const result = await PlayList.find({videos: {$gt : 50}}); // videos > 50
+        // const result = await PlayList.find({videos: {$lte : 50}}); // videos <= 50
+
+        const result = await PlayList.find({ctype: {$in : ["Back End", "Database"]}}); // shows collection which matches any of them
+
+        console.log(result);
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+queryDocument();
